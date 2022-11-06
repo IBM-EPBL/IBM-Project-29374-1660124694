@@ -3,14 +3,6 @@ import numpy as np
 import matplotlib as plt
 from sklearn.preprocessing import LabelEncoder
 import pickle
-from sklearn.model_selection import cross_val_score, train_test_split 
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state = 3)
-from sklearn.ensemble import RandomForestRegressor 
-from sklearn.metrics import r2_score 
-regressor = RandomForestRegressor(n_estimators=1000, max_depth=10, random_state=34),
-
-regressor.fit(X_train, np.ravel(Y_train,order='C'))
-
 df =  pd.read_csv("Data/autos.csv",header=0,sep= ',',encoding='Latin1',)
 print(df.seller.value_counts()) 
 df[df.seller != 'gewerblich'] 
@@ -59,6 +51,15 @@ print(labeled.columns)
 Y = labeled.iloc[:,0].values
 X = labeled.iloc[:,1:].values
 Y = Y.reshape(-1,1)
+
+from sklearn.model_selection import cross_val_score, train_test_split 
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state = 3)
+
+from sklearn.ensemble import RandomForestRegressor 
+from sklearn.metrics import r2_score 
+regressor = RandomForestRegressor(n_estimators=1000, max_depth=10, random_state=34),
+
+regressor.fit(X_train, np.ravel(Y_train,order='C'))
 y_pred = regressor.predict(X_test);
 print(r2_score(y_true, y_pred))
 filename = 'resale_model.sav'
