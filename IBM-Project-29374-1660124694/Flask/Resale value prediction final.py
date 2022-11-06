@@ -59,3 +59,7 @@ print(labeled.columns)
 Y = labeled.iloc[:,0].values
 X = labeled.iloc[:,1:].values
 Y = Y.reshape(-1,1)
+y_pred = regressor.predict(X_test);
+print(r2_score(y_true, y_pred))
+filename = 'resale_model.sav'
+pickle.dump(regressor, open(filename, 'wb'))
