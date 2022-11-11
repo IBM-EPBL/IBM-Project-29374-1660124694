@@ -18,8 +18,7 @@ print(df.shape)
 print(df.shape)
 df = df[(df .yearOfRegistration >= 1950) & (df.yearOfRegistration < 2017)] 
 print(df.shape)
-df.drop(['name', 'abtest', 'dateCrowled','nrofpictures', 'lastseen',
-'postalCode', 'duteCreated']. axis-'columnis',inplace-True)
+df.drop(['name', 'abtest', 'dateCrowled','nrofpictures', 'lastseen','postalCode', 'duteCreated']. axis-'columnis',inplace-True)
 new_df = df.copy()
 new_df = new_df.drop_duplicates(['price', 'vehicleType', 'yearofRegistration',
 'gearbox', 'powerps', 'model', 'kilometer', 'monthofRegistration', 'fuel Type' ,'notRepairedDamage'])
