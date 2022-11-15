@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Car Resale Value Prediction - Get Quote</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="./js/getQuote.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <style>
+      .form-check-input{
+        display: inline;
+      }
+    </style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+      <img src="{{url_for('static', filename='logo.jpg')}}" width="30" height="30" class="d-inline-block align-top" alt="">
+      Car Resale Value Prediction
+    </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#service">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#product">Sell</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#social">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+<body>
+<br>
+  <div class="card" style="width: 60%; margin:auto;padding:20px;">
+    <form action="http://localhost:5000/y_predict" method="post">
+
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Registration Month And Year</label>
+                <input class="form-control" type="month" min="1950" max="2022" value="2020-11" step="1" name="regyear" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Power</label>
+              <input type="number" min="50" max="1000" step="0.1" class="form-control" id="" placeholder="Enter" name="powerps" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Kilometers</label>
+              <input type="number" step="0.1" class="form-control" id="" placeholder="Kilometers" name="kms" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Gearbox</label>
+              <select class="form-control" id="" name="gearbox" required>
+                <option value="automatic">Automatic</option>
+                <option value="manual">Manual</option>
+              </select>
+            </div>
+            <div class="damage-radio" >
+              <label for="">Damage</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="damage" id="">
+              <label class="form-check-label" for="flexRadioDefault1" style="margin-right: 25px;">
+                Yes
+              </label>
+            
+              <input class="form-check-input" type="radio" name="damage" id="" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                No
+              </label>
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Model</label>
+              <select class="form-control" id="" name="model" required>
+                  <option value="">Select Your Model</option>
+                {% for x in models -%}
+                  <option value="{{ x }}">{{ x }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Brand</label>
+              <select class="form-control" id="" name="brand" required>
+                  <option value="">Select Your Brand</option>
+                {% for x in brands -%}
+                  <option value="{{ x }}">{{ x }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Fuel type</label>
+              <select class="form-control" id="" name="fuel" required>
+                <option value="petrol">Petrol</option>
+                <option value="diesel">Diesel</option>
+                <option value="electric">Electric</option>
+                <option value="cng">CNG</option>
+                  <option value="lpg">LPG</option>
+                  <option value="hybrid">Hybrid</option>
+                  <option value="others">Others</option>
+
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Vehicle Type</label>
+              <select class="form-control" id="" name="vehicle" required>
+                <option value="bus">Bus</option>
+                <option value="combination">Combination</option>
+                <option value="convertible">Convertible</option>
+                <option value="coupe">Coupe</option>
+                <option value="small car">Small car</option>
+                <option value="suv">SUV</option>
+                <option value="limousine">Limousine</option>
+                <option value="others">Others</option>
+
+              </select>
+            </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+<br>
+</body>
+</html>

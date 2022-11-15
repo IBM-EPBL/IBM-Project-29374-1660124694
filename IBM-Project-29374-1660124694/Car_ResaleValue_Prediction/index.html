@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #0c1c9c;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin-left: 200px;
+      }
+
+      .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+
+      .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+
+      .button:hover span {
+        padding-right: 25px;
+      }
+
+      .button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,
+				initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
+    <title>Car Resale Value Prediction</title>
+  </head>
+  <body>
+    <section id="navbar">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+      <img src="{{url_for('static', filename='logo.jpg')}}" width="30" height="30" class="d-inline-block align-top" alt="">
+      Car Resale Value Prediction
+    </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#service">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#product">Sell</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#social">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <hr>
+    <!-- banner -->
+    <section id="banner">
+      <div class="container-fluid" id="banner-container">
+        <div class="row" id="banner-row">
+          <div class="col-md-6" id="banner-col">
+            <h3> GET BEST PRICE IN 2 MINUTES </h3><br>
+            <ul class="fa-ul">
+              <li>
+                <i class="fa fa-check-square-o" aria-hidden="true"></i>Sell From Your Home
+              </li>
+              <li>
+                <i class="fa fa-check-square-o" aria-hidden="true"></i>Instant Payment
+              </li>
+              <li>
+                <i class="fa fa-check-square-o" aria-hidden="true"></i>Free RC Transfer
+              </li>
+            </ul>
+            <div class="d-grid gap-2 d-md-flex justify-content-center">
+              <a class="btn btn-primary" href="./getQuote" role="button">Sell Cars!</a>
+            </div>
+          </div>
+          <div class="col-md-6" id="banner-col2">
+            <img class="img-responsive rounded mx-auto d-block" width="100%" src="{{url_for('static', filename='bg.jpg')}}" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <!-- services -->
+    <section id="service">
+      <h1 class="text-center">How it Works</h1>
+      <div class="container-fluid" id="service-container">
+        <div class="row" id="banner-row">
+          <div class="col-md-4" id="service-col1">
+            <img src="{{url_for('static', filename='1.png')}}" class="img-fluid rounded mx-auto d-block" alt="..." />
+            <h3>Enter your Car Details Online</h3>
+            <p> Gone are the days of spending weeks to sell a car. Sell your car in minutes from home. </p>
+          </div>
+          <div class="col-md-4" id="service-col2">
+            <img src="{{url_for('static', filename='2.png')}}" class="img-fluid rounded mx-auto d-block" alt="..." />
+            <h3>Get a Final Offer, instantly!</h3>
+            <p> The offer that we make based on the car details you fill will be final and binding. </p>
+          </div>
+          <div class="col-md-4" id="service-col3">
+            <img src="{{url_for('static', filename='3.png')}}" class="img-fluid rounded mx-auto d-block" alt="..." />
+            <h3>Doorstep Pickup</h3>
+            <p> We will verify the car details at your home, pick up the car and transfer the amount. </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <!-- about Us -->
+    <section id="about">
+      <h1 class="text-center">About Us</h1>
+      <div class="container-fluid" id="about-container">
+        <div class="row" id="banner-row">
+          <div class="col-md-6" id="about-col">
+            <h3>The first-class destination for second-hand cars!</h3>
+            <ul>
+              <li> Car Resale Value Prediction is your single stop for buying or selling used cars, all over India. We've brought together cutting-edge technology with country-wide partners and more importantly, deep understanding of what buyers and sellers need. We solve all pain points associated with selling an existing car, or purchasing a pre-loved one. Whether you're buying or selling, you get a quick, easy, fair, transparent, hassle (and haggle) free process. </li>
+            </ul>
+            <h3>Want to know about buying cars with us?</h3>
+            <ul>
+              <li>If you’re in the market for a pre-used car, the process can be daunting. Finding the car, talking to the owner, negotiating, examining its condition, wondering what you haven’t been told, final purchase, RC Transfer, money transfer… phew, that’s a lot for you to go through, especially in a market that’s quite scattered. By visiting Car Resale Value Prediction, we make this as simple as any other form of online shopping.</li>
+              <li> Our large catalogue of cars has every make and model you want, with a thorough vetting process ensuring full transparency in quality. With easy financing options, RC Transfer assistance and a 6 month warranty on each car, we take all the uncertainty out of the purchase process. You focus on where you’ll go when your newly purchased car comes home, we’ll take care of the rest. </li>
+            </ul>
+            <h3>More interested in selling your car with us?</h3>
+            <p> Traditionally, selling old cars is painful enough to make you stall the whole process. It takes 20-30 attempts to get the correct valuation, meet buyers face-to-face, negotiate each time, and then of course, wait several months for that RC Transfer. Do you really want to put yourself through that? </p>
+            <br>
+            <p> Instead, log on to CAR RESALE VALUE PREDICTION, describe your car, get a fair offer on it instantly, and sell it in less than an hour from your home or our branch. Our network of channel partners across the country bid for every car sold on our platform, ensuring a quick sale with a price that you will be happy with. We aim to bring down the car-selling process to a matter of a few hours, and let you sell your car from anywhere without even having to get off your couch. </p>
+            <h3>Our Mission</h3>
+            <p>Our mission is to revolutionise the way used cars are bought and sold across the world. With this in mind, we set up in 2015, and we’ve come a long way since then - from one single office, to 205 branches across 182 major cities in India. Over 4 Lakh happy customers have used our platform since. And with continuous innovation, more partnerships, and valuable relationships with people, we want to keep solving problems for consumers and add ease and value to their lives.</p>
+          </div>
+          <div class="col-md-6" id="banner-col2">
+            <!-- <img class="img-responsive rounded mx-auto d-block" src="images/gfg.png" alt="" /> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <!-- product -->
+    <section id="product">
+      <!-- <h1 class="text-center">Our Products</h1> -->
+      <div class="container-fluid" id="product-container">
+        <div class="row" id="banner-row">
+          <div class="col-md-6" id="about-col">
+            <!-- <img class="img-responsive rounded mx-auto d-block" src="images/logo.png" alt="" /> -->
+          </div>
+          <div class="col-md-6" id="product-col2">
+            <h3>Ready to Sell Your Car?</h3>
+            <p> Sell your car at your nearest CAR RESALE VALUE PREDICTION branch or from the comfort of your home in minutes! Get paid instantly with free RC transfer </p>
+            <button onclick="window.location.href='http://localhost:5000/getQuote';" class="button" style="vertical-align:middle">
+              <span>Sell Cars! </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <!-- social -->
+    <section id="social">
+      <h1 class="text-center">A Whole new World of Cars!</h1>
+      <div class="d-grid gap-2 d-md-flex justify-content-center">
+        <div class="row align-items-center" id="social-row">
+          <div class="col-md-4 social-col">
+            <a href="">
+              <!-- <img class="img-responsive rounded mx-auto d-block" src="images/logo.png" alt="" /> -->
+            </a>
+          </div>
+          <div class="col-md-4 social-col">
+            <a href="">
+              <img class="img-responsive rounded mx-auto d-block" src="images/icons8-instagram-64.png" alt="" />
+            </a>
+          </div>
+          <div class="col-md-4 social-col">
+            <a href="">
+              <img class="img-responsive rounded mx-auto d-block" src="images/icons8-twitter-64.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer -->
+    <section id="footer">
+      <section id="banner">
+        <div class="container-fluid" id="banner-container">
+          <div class="row" id="banner-row">
+            <div class="col-md-4" id="footer-col1"></div>
+            <div class="col-md-4" id="footer-col2">
+              <h3>Contact Us</h3>
+              <p>Call Us- 1800-121-6532</p>
+              <p>Email Us- crvp@24.com</p>
+            </div>
+            <div class="col-md-4" id="footer-col2">
+              <h3>Enter your Feedback</h3>
+              <form>
+                <div class="mb-3">
+                  <input type="email" placeholder="Enter Your Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                  <div id="emailHelp" class="form-text"> We'll never share your email with anyone else. </div>
+                </div>
+                <button type="submit" class="btn btn-primary"> Submit </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>
